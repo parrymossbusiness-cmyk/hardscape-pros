@@ -210,27 +210,26 @@ section { padding: 64px 0; }
   .nav-dropdown[open] > .nav-summary .caret { transform: rotate(-135deg); margin-top: 3px; }
 
   .dropdown-panel {
-    position: fixed;
-    top: var(--header-h);
-    left: 50%;
-    transform: translateX(-50%) translateY(6px);
-    max-width: calc(100vw - 32px);
+    position: absolute;
+    top: 100%;
+    left: 0;
     background: var(--color-white);
     border-radius: var(--radius);
     box-shadow: var(--shadow-lg);
     padding: 24px;
     display: grid;
-    grid-template-columns: repeat(4, 220px);
+    grid-template-columns: repeat(2, 220px);
     gap: 24px;
     opacity: 0;
     visibility: hidden;
+    transform: translateY(6px);
     transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
   }
   .nav-dropdown:hover .dropdown-panel,
   .nav-dropdown[open] .dropdown-panel {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
   .dropdown-panel-areas { grid-template-columns: 220px; }
   .dropdown-col-heading {
@@ -287,18 +286,6 @@ section { padding: 64px 0; }
 .site-header.is-solid .header-reviews { color: var(--color-muted); }
 .header-reviews .stars { color: var(--color-amber); letter-spacing: 1px; }
 .header-reviews .google-g { width: 14px; height: 14px; flex-shrink: 0; }
-
-.header-cta-wrap { display: none; }
-@media (min-width: 1024px) {
-  .header-cta-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    flex-shrink: 0;
-  }
-  .header-cta-wrap .header-reviews { white-space: nowrap; }
-}
 
 .header-cta { display: none; flex-shrink: 0; }
 @media (min-width: 1024px) {
@@ -473,6 +460,19 @@ section { padding: 64px 0; }
   max-width: 44em;
 }
 .hero .cta-group .btn { font-size: 0.88rem; padding: 14px 22px; }
+
+.hero-reviews { display: none; }
+@media (min-width: 1024px) {
+  .hero-reviews {
+    display: block;
+    margin-top: 18px;
+  }
+  .hero-reviews .header-reviews {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  }
+}
 
 /* Interior page banner (smaller, non-full-viewport hero) */
 .page-banner {
